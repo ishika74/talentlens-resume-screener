@@ -1,0 +1,10 @@
+
+{
+  "name": "talentlens-resume-screener",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Evidence-based AI resume review assistant using Gemini and Vercel Functions",
+  "engines": {
+    "node": ">=20"
+  }
+}

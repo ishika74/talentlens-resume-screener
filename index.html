@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evidence-based AI resume review assistant.">
+  <title>TalentLens — AI Resume Screener</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="TalentLens home"><span class="brand-mark">T</span><span>TalentLens</span></a>
+    <span class="top-note"><span class="status-dot"></span> AI-assisted review</span>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">RECRUITING WORKSPACE</p>
+      <h1>Find the evidence.<br><span>Make better-informed decisions.</span></h1>
+      <p class="hero-copy">Compare resume evidence with a job description, surface skill matches and gaps, and keep the recruiter in control.</p>
+    </section>
+
+    <section class="workspace">
+      <form id="screen-form" class="input-panel">
+        <div class="section-heading">
+          <div><p class="step-label">STEP 01</p><h2>Define the role</h2></div>
+          <span class="pill">Required</span>
+        </div>
+        <label for="job-description">Job description</label>
+        <textarea id="job-description" name="jobDescription" rows="8" maxlength="12000" required placeholder="Paste the job description, including responsibilities and required skills…"></textarea>
+        <div class="field-meta"><span>Include must-have and nice-to-have requirements.</span><span id="job-count">0 / 12,000</span></div>
+
+        <div class="section-heading resume-heading">
+          <div><p class="step-label">STEP 02</p><h2>Add resumes</h2></div>
+          <span class="pill">Up to 5</span>
+        </div>
+        <label class="drop-zone" for="resume-files" id="drop-zone">
+          <span class="upload-icon">↑</span>
+          <strong>Choose PDF or text files</strong>
+          <span>or drag and drop them here</span>
+          <small>PDF, TXT · max 5 files · 2 MB each</small>
+        </label>
+        <input id="resume-files" type="file" accept=".pdf,.txt,application/pdf,text/plain" multiple hidden>
+        <ul id="file-list" class="file-list" aria-live="polite"></ul>
+
+        <div class="privacy-note"><span aria-hidden="true">ⓘ</span><p>Use consented, appropriately handled resumes. This demo does not save candidate records, but text is sent to the configured AI provider for analysis. Avoid uploading unnecessary personal data.</p></div>
+        <button id="analyze-button" class="primary-button" type="submit"><span>Analyze resumes</span><span aria-hidden="true">→</span></button>
+        <p class="form-footnote">AI outputs can be wrong. Review evidence yourself; do not use this tool as an automated hiring decision-maker.</p>
+      </form>
+
+      <section class="results-panel" aria-labelledby="results-title">
+        <div class="results-header">
+          <div><p class="step-label">YOUR WORKSPACE</p><h2 id="results-title">Review results</h2></div>
+          <span id="results-count" class="results-count">0 candidates</span>
+        </div>
+        <div id="status-message" class="status-message" role="status" aria-live="polite">
+          <div class="empty-illustration"><span>✳</span><span>▤</span><span>⌕</span></div>
+          <h3>Your candidate insights will appear here</h3>
+          <p>Add a job description and up to five resumes to get evidence-based summaries, skill matches, and follow-up questions.</p>
+        </div>
+        <div id="results-list" class="results-list"></div>
+        <div class="results-disclaimer" id="results-disclaimer" hidden>These AI-generated summaries are decision support only. Verify claims against original materials and apply consistent, job-related criteria to every candidate.</div>
+      </section>
+    </section>
+    <footer><span>TalentLens · Resume review assistant</span><span>Built for transparent, human-led review</span></footer>
+  </main>
+</body>
+</html>
